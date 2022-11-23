@@ -1,15 +1,23 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-11-22 14:30:12.424
+-- Last modification date: 2022-11-23 10:14:55.114
 
 -- tables
--- Table: account
-CREATE TABLE account (
+-- Table: city
+CREATE TABLE city (
+                      id serial  NOT NULL,
+                      name varchar(50)  NOT NULL,
+                      CONSTRAINT city_pk PRIMARY KEY (id)
+);
+
+-- Table: contact
+CREATE TABLE contact (
                          id serial  NOT NULL,
                          first_name varchar(255)  NOT NULL,
                          last_name varchar(255)  NOT NULL,
+                         phone varchar(255)  NOT NULL,
                          institution varchar(255)  NOT NULL,
-                         phone int  NOT NULL,
-                         CONSTRAINT account_pk PRIMARY KEY (id)
+                         user_id int  NOT NULL,
+                         CONSTRAINT contact_pk PRIMARY KEY (id)
 );
 
 -- Table: grade
@@ -22,17 +30,17 @@ CREATE TABLE grade (
 -- Table: offer
 CREATE TABLE offer (
                        id serial  NOT NULL,
-                       offer_name varchar(255)  NOT NULL,
-                       address varchar(255)  NOT NULL,
-                       city varchar(50)  NOT NULL,
+                       user_id int  NOT NULL,
+                       name varchar(255)  NOT NULL,
+                       description varchar(4096)  NOT NULL,
                        price_per_student int  NOT NULL,
+                       students_min int  NOT NULL,
+                       students_max int  NOT NULL,
+                       city_id int  NOT NULL,
+                       address varchar(255)  NOT NULL,
                        phone int  NOT NULL,
-                       student_number_min int  NOT NULL,
-                       student_number_max int  NOT NULL,
-                       offer_description varchar(4096)  NOT NULL,
-                       additional_info varchar(255)  NOT NULL,
-                       photo bigint  NOT NULL,
-                       time date  NOT NULL,
+                       date_add date  NOT NULL DEFAULT now(),
+                       additional_info varchar(255)  NULL,
                        CONSTRAINT offer_pk PRIMARY KEY (id)
 );
 
@@ -40,8 +48,17 @@ CREATE TABLE offer (
 CREATE TABLE offer_grade (
                              id serial  NOT NULL,
                              offer_id int  NOT NULL,
-                             school_grade_id int  NOT NULL,
+                             grade_id int  NOT NULL,
                              CONSTRAINT offer_grade_pk PRIMARY KEY (id)
+);
+
+-- Table: offer_picture
+CREATE TABLE offer_picture (
+                               id serial  NOT NULL,
+                               picture_id int  NOT NULL,
+                               offer_id int  NOT NULL,
+                               status char(1)  NOT NULL DEFAULT 'A',
+                               CONSTRAINT offer_picture_pk PRIMARY KEY (id)
 );
 
 -- Table: offer_subject
@@ -50,6 +67,13 @@ CREATE TABLE offer_subject (
                                offer_id int  NOT NULL,
                                subject_id int  NOT NULL,
                                CONSTRAINT offer_subject_pk PRIMARY KEY (id)
+);
+
+-- Table: picture
+CREATE TABLE picture (
+                         id serial  NOT NULL,
+                         data bytea  NOT NULL,
+                         CONSTRAINT picture_pk PRIMARY KEY (id)
 );
 
 -- Table: subject
@@ -68,37 +92,76 @@ CREATE TABLE "user" (
 );
 
 -- foreign keys
--- Reference: Table_8_offer (table: offer_grade)
-ALTER TABLE offer_grade ADD CONSTRAINT Table_8_offer
-    FOREIGN KEY (offer_id)
-        REFERENCES offer (id)
+-- Reference: contact_user (table: contact)
+ALTER TABLE contact ADD CONSTRAINT contact_user
+    FOREIGN KEY (user_id)
+        REFERENCES "user" (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
 
--- Reference: Table_8_school_grade (table: offer_grade)
-ALTER TABLE offer_grade ADD CONSTRAINT Table_8_school_grade
-    FOREIGN KEY (school_grade_id)
+-- Reference: offer_city (table: offer)
+ALTER TABLE offer ADD CONSTRAINT offer_city
+    FOREIGN KEY (city_id)
+        REFERENCES city (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: offer_grade_grade (table: offer_grade)
+ALTER TABLE offer_grade ADD CONSTRAINT offer_grade_grade
+    FOREIGN KEY (grade_id)
         REFERENCES grade (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
 
--- Reference: Table_9_offer (table: offer_subject)
-ALTER TABLE offer_subject ADD CONSTRAINT Table_9_offer
+-- Reference: offer_grade_offer (table: offer_grade)
+ALTER TABLE offer_grade ADD CONSTRAINT offer_grade_offer
     FOREIGN KEY (offer_id)
         REFERENCES offer (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
 
--- Reference: Table_9_subject (table: offer_subject)
-ALTER TABLE offer_subject ADD CONSTRAINT Table_9_subject
+-- Reference: offer_picture_offer (table: offer_picture)
+ALTER TABLE offer_picture ADD CONSTRAINT offer_picture_offer
+    FOREIGN KEY (offer_id)
+        REFERENCES offer (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: offer_picture_picture (table: offer_picture)
+ALTER TABLE offer_picture ADD CONSTRAINT offer_picture_picture
+    FOREIGN KEY (picture_id)
+        REFERENCES picture (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: offer_subject_offer (table: offer_subject)
+ALTER TABLE offer_subject ADD CONSTRAINT offer_subject_offer
+    FOREIGN KEY (offer_id)
+        REFERENCES offer (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+-- Reference: offer_subject_subject (table: offer_subject)
+ALTER TABLE offer_subject ADD CONSTRAINT offer_subject_subject
     FOREIGN KEY (subject_id)
         REFERENCES subject (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
 
--- End of file.
+-- Reference: offer_user (table: offer)
+ALTER TABLE offer ADD CONSTRAINT offer_user
+    FOREIGN KEY (user_id)
+        REFERENCES "user" (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
 
+-- End of file.
