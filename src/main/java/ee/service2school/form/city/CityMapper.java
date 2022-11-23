@@ -8,10 +8,10 @@ public interface CityMapper {
     @Mapping(source = "cityName", target = "name")
     City cityDtoToCity(CityDto cityDto);
 
-//    @InheritInverseConfiguration(name = "cityDtoToCity")
-//    CityDto cityToCityDto(City city);
+    @InheritInverseConfiguration(name = "cityDtoToCity")
+    CityDto cityToCityDto(City city);
 
-//    @InheritConfiguration(name = "cityDtoToCity")
-//    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-//    City updateCityFromCityDto(CityDto cityDto, @MappingTarget City city);
+    @InheritConfiguration(name = "cityDtoToCity")
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    City updateCityFromCityDto(CityDto cityDto, @MappingTarget City city);
 }
