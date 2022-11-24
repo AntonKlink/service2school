@@ -4,6 +4,4 @@ import org.mapstruct.Mapping;
 
 public interface FormMapper {
 
-@Mapping(source = "?", target = "?")
-
 }
