@@ -1,17 +1,21 @@
 package ee.service2school.form.city;
 
 import org.mapstruct.*;
+import org.w3c.dom.stylesheets.LinkStyle;
+
+import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface CityMapper {
-    @Mapping(source = "cityId", target = "id")
-    @Mapping(source = "cityName", target = "name")
-    City cityDtoToCity(CityDto cityDto);
+    @Mapping(source = "id", target = "cityId")
+    @Mapping(source = "name", target = "cityName")
 
-    @InheritInverseConfiguration(name = "cityDtoToCity")
-    CityDto cityToCityDto(City city);
+    CityDto toCityDto(City city);
 
-    @InheritConfiguration(name = "cityDtoToCity")
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    City updateCityFromCityDto(CityDto cityDto, @MappingTarget City city);
+
+    List<CityDto> toCityDtos(List<City> cities);
+
+
+
+
 }
