@@ -8,6 +8,10 @@ import ee.service2school.form.grade.Grade;
 import ee.service2school.form.grade.GradeDto;
 import ee.service2school.form.grade.GradeMapper;
 import ee.service2school.form.grade.GradeRepository;
+import ee.service2school.form.subject.Subject;
+import ee.service2school.form.subject.SubjectDto;
+import ee.service2school.form.subject.SubjectMapper;
+import ee.service2school.form.subject.SubjectRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,28 +26,43 @@ public class FormController {
     private CityRepository cityRepository;
 
     @Resource
-    private CityMapper cityMapper;
+    private GradeRepository gradeRepository;
 
     @Resource
-    private GradeRepository gradeRepository;
+    private SubjectRepository subjectRepository;
+
+    @Resource
+    private CityMapper cityMapper;
 
     @Resource
     private GradeMapper gradeMapper;
 
-    @GetMapping("/test")
-    @Operation(summary = "Siin on testlehekülg")
+    @Resource
+    private SubjectMapper subjectMapper;
 
-    public List<CityDto> getAllCityNames () {
+
+    @GetMapping("/testCities")
+    @Operation(summary = "Siia tuleb linnade loetelu")
+
+    public List<CityDto> getAllCityNames() {
         List<City> entities = cityRepository.findAll();
         List<CityDto> cityDtos = cityMapper.toCityDtos(entities);
         return cityDtos;
     }
 
+    @GetMapping("/testGrades")
+    @Operation(summary = "Siia tuleb klasside loetelu")
     public List<GradeDto> getAllGrades() {
         List<Grade> entities = gradeRepository.findAll();
         List<GradeDto> gradeDtos = gradeMapper.toDtos(entities);
         return gradeDtos;
     }
 
-
+    @GetMapping("/testSubjects")
+    @Operation(summary = "Siia tuleb ainete loetelu")
+    public List<SubjectDto> getAllSubjects() {
+        List<Subject> entities = subjectRepository.findAll();
+        List<SubjectDto> subjectDtos = subjectMapper.toDtos(entities);
+        return subjectDtos;
+    }
 }
