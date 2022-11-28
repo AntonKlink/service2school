@@ -1,4 +1,4 @@
-package ee.service2school.form.city;
+package ee.service2school.domain.form.city;
 
 import lombok.Data;
 

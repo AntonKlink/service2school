@@ -1,4 +1,4 @@
-package ee.service2school.form.grade;
+package ee.service2school.domain.form.grade;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

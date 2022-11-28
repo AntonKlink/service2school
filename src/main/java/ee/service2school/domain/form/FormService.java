@@ -1,4 +1,4 @@
-package ee.service2school.form;
+package ee.service2school.domain.form;
 
 import org.springframework.stereotype.Service;
 

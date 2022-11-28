@@ -1,4 +1,4 @@
-package ee.service2school.form.grade;
+package ee.service2school.domain.form.grade;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

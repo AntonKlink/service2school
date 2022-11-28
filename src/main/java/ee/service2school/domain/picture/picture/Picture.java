@@ -1,21 +1,19 @@
-package ee.service2school.form.city;
+package ee.service2school.domain.picture.picture;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "city")
-public class City {
+@Table(name = "picture")
+public class Picture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Size(max = 50)
     @NotNull
-    @Column(name = "name", nullable = false, length = 50)
-    private String name;
+    @Column(name = "data", nullable = false)
+    private byte[] data;
 
     public Integer getId() {
         return id;
@@ -25,12 +23,12 @@ public class City {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public byte[] getData() {
+        return data;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setData(byte[] data) {
+        this.data = data;
     }
 
 }

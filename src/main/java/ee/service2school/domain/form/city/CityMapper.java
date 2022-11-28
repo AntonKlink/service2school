@@ -1,7 +1,6 @@
-package ee.service2school.form.city;
+package ee.service2school.domain.form.city;
 
 import org.mapstruct.*;
-import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.util.List;
 

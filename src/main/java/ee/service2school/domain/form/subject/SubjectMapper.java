@@ -1,4 +1,4 @@
-package ee.service2school.form.subject;
+package ee.service2school.domain.form.subject;
 
 import org.mapstruct.*;
 
