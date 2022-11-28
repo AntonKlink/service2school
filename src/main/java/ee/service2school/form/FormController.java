@@ -41,7 +41,7 @@ public class FormController {
     private SubjectMapper subjectMapper;
 
 
-    @GetMapping("/testCities")
+    @GetMapping("/views/db")
     @Operation(summary = "Siia tuleb linnade loetelu")
 
     public List<CityDto> getAllCityNames() {
@@ -50,7 +50,7 @@ public class FormController {
         return cityDtos;
     }
 
-    @GetMapping("/testGrades")
+    @GetMapping("/filter/grade")
     @Operation(summary = "Siia tuleb klasside loetelu")
     public List<GradeDto> getAllGrades() {
         List<Grade> entities = gradeRepository.findAll();
@@ -58,7 +58,7 @@ public class FormController {
         return gradeDtos;
     }
 
-    @GetMapping("/testSubjects")
+    @GetMapping("/filter/subject")
     @Operation(summary = "Siia tuleb ainete loetelu")
     public List<SubjectDto> getAllSubjects() {
         List<Subject> entities = subjectRepository.findAll();
