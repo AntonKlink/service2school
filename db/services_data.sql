@@ -25,7 +25,7 @@ INSERT INTO public.subject (id, name) VALUES (5, 'Füüsika');
 INSERT INTO public.subject (id, name) VALUES (6, 'Inglise keel');
 INSERT INTO public.subject (id, name) VALUES (7, 'Kirjandus');
 
-INSERT INTO public."user" (id, email, password) VALUES (1, 'valeria@mail.ee', '123');
+INSERT INTO public."user" (id, email, password) VALUES (1, 'valeria', '123');
 INSERT INTO public."user" (id, email, password) VALUES (2, 'kaupo@mail.ee', '321');
 INSERT INTO public."user" (id, email, password) VALUES (3, 'anton@mail.ee', '231');
 
