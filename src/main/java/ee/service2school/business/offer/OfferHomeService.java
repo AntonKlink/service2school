@@ -1,9 +1,6 @@
 package ee.service2school.business.offer;
 
-import ee.service2school.domain.offer.Offer;
-import ee.service2school.domain.offer.OfferDto;
-import ee.service2school.domain.offer.OfferHomeMapper;
-import ee.service2school.domain.offer.OfferRepository;
+import ee.service2school.domain.offer.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,11 +12,11 @@ public class OfferHomeService {
     @Resource
     public OfferHomeMapper offerHomeMapper;
     @Resource
-    public OfferRepository offerRepository;
+    public OfferService offerService;
 
-    public List<OfferDto> getNameDescription() {
-        List<Offer> firstTwoEntities = offerRepository.findAll();
-        List<OfferDto> allDtos = offerHomeMapper.toDtos(firstTwoEntities);
-        return allDtos;
+    public List<OfferDto> getOffers() {
+        List<Offer> offers = offerService.getLastFiveOffers();
+        List<OfferDto> offerDtos = offerHomeMapper.toDtos(offers);
+        return offerDtos;
     }
 }
