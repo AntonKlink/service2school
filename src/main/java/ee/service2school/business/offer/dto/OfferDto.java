@@ -1,5 +1,6 @@
-package ee.service2school.domain.offer;
+package ee.service2school.business.offer.dto;
 
+import ee.service2school.domain.offer.Offer;
 import lombok.Data;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Service;

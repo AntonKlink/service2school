@@ -1,5 +1,6 @@
 package ee.service2school.business.offer;
 
+import ee.service2school.business.offer.dto.OfferDto;
 import ee.service2school.domain.offer.*;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.List;
 public class OfferHomeService {
 
     @Resource
-    public OfferHomeMapper offerHomeMapper;
+    public OfferMapper offerHomeMapper;
     @Resource
     public OfferService offerService;
 

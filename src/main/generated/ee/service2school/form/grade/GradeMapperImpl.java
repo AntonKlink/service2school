@@ -3,6 +3,8 @@ package ee.service2school.form.grade;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+
+import ee.service2school.domain.form.grade.GradeMapper;
 import org.springframework.stereotype.Component;
 
 @Generated(

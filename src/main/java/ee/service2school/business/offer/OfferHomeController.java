@@ -1,6 +1,6 @@
 package ee.service2school.business.offer;
 
-import ee.service2school.domain.offer.OfferDto;
+import ee.service2school.business.offer.dto.OfferDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,5 +22,7 @@ public class OfferHomeController {
         List<OfferDto> result = offerHomeService.getOffers();
         return result;
     }
+
+    // TODO: 01.12.2022 Siia tuleb getDetailInfo (offerId)
 
 }
