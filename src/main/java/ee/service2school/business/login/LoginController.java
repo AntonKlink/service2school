@@ -1,6 +1,8 @@
-package ee.service2school.login;
+package ee.service2school.business.login;
 
 import ee.service2school.domain.contact.*;
+import ee.service2school.login.LoginResponse;
+import ee.service2school.login.LoginService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

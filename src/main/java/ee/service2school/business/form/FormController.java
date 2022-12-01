@@ -1,4 +1,4 @@
-package ee.service2school.domain.form;
+package ee.service2school.business.form;
 
 import ee.service2school.domain.form.city.CityRepository;
 import ee.service2school.domain.form.subject.Subject;
