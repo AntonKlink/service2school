@@ -26,8 +26,8 @@ INSERT INTO public.subject (id, name) VALUES (6, 'Inglise keel');
 INSERT INTO public.subject (id, name) VALUES (7, 'Kirjandus');
 
 INSERT INTO public."user" (id, email, password) VALUES (1, 'valeria', '123');
-INSERT INTO public."user" (id, email, password) VALUES (2, 'kaupo@mail.ee', '321');
-INSERT INTO public."user" (id, email, password) VALUES (3, 'anton@mail.ee', '231');
+INSERT INTO public."user" (id, email, password) VALUES (2, 'kaupo', '321');
+INSERT INTO public."user" (id, email, password) VALUES (3, 'anton', '231');
 
 INSERT INTO public.contact (id, first_name, last_name, phone, institution, user_id) VALUES (1, 'Valeria', 'Lukasevits', '56458135', 'Narva linnus', 1);
 INSERT INTO public.contact (id, first_name, last_name, phone, institution, user_id) VALUES (2, 'Kaupo', 'Vaher', '55412375', 'Eesti Rahva Muuseum', 2);
