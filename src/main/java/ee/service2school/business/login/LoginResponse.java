@@ -1,4 +1,4 @@
-package ee.service2school.login;
+package ee.service2school.business.login;
 
 import ee.service2school.domain.user.User;
 import lombok.AllArgsConstructor;

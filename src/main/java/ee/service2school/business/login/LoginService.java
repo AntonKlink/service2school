@@ -1,16 +1,12 @@
-package ee.service2school.login;
+package ee.service2school.business.login;
 
-import ee.service2school.domain.contact.Contact;
-import ee.service2school.domain.contact.ContactMapper;
-import ee.service2school.domain.contact.ContactRepository;
+import ee.service2school.domain.contact.*;
 import ee.service2school.domain.user.User;
 import ee.service2school.domain.user.UserMapper;
 import ee.service2school.domain.user.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class LoginService {
@@ -22,11 +18,10 @@ public class LoginService {
     private UserService userService;
 
     @Resource
-    private ContactRepository contactRepository;
-
-    @Resource
     private ContactMapper contactMapper;
 
+    @Resource
+    private ContactService contactService;
 
     public LoginResponse login(String email, String password) {
         User user = userService.getValidUser(email, password);
@@ -35,4 +30,9 @@ public class LoginService {
     }
 
 
+    public ContactDto getProfileInfo(Integer userId) {
+        Contact contact = contactService.findByUserId(userId);
+        ContactDto contactDto = contactMapper.contactDto(contact);
+        return contactDto;
+    }
 }
