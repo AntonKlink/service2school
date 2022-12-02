@@ -15,4 +15,8 @@ public class ContactService {
     public Contact findByUserId(Integer userId) {
         return contactRepository.findByUserId(userId);
     }
+
+    public void addNewContact(Contact contact) {
+        contactRepository.save(contact);
+    }
 }

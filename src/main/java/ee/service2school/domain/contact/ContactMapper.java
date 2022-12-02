@@ -1,5 +1,6 @@
 package ee.service2school.domain.contact;
 
+import ee.service2school.business.login.ContactRequest;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface ContactMapper {
     ContactDto contactDto(Contact contact);
 
     List<ContactDto> contactDtos (List<Contact> contacts);
+
+    Contact toEntity(ContactRequest request);
 
 
 }

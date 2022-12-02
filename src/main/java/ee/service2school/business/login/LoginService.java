@@ -44,4 +44,12 @@ public class LoginService {
         return response;
 
     }
+
+    public LoginResponse addNewContact(ContactRequest request) {
+        Contact contact = contactMapper.toEntity(request);
+        contactService.addNewContact(contact);
+        Integer contactId = contact.getId();
+        LoginResponse response = new LoginResponse(contactId);
+        return response;
+    }
 }

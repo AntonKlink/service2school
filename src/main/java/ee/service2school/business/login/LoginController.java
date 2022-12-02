@@ -34,8 +34,9 @@ public class LoginController {
 
     @PostMapping("/contact")
     @Operation(summary = "Kontakt andmete lisamne (Eesnimi,Perekonnanimi,Asutuse nimi,Kontakttelefon)")
-    public void addNewContact(@RequestBody ContactRequest request) {
-            // TODO: 01/12/2022
+    public LoginResponse addNewContact(@RequestBody ContactRequest request) {
+        LoginResponse response = loginService.addNewContact(request);
+        return response;
     }
 
 
