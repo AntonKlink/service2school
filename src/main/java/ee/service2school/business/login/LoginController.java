@@ -1,6 +1,7 @@
 package ee.service2school.business.login;
 
 import ee.service2school.domain.contact.*;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -10,7 +11,6 @@ public class LoginController {
 
     @Resource
     private LoginService loginService;
-
 
 
     @GetMapping("/login")
@@ -27,9 +27,18 @@ public class LoginController {
     }
 
     @PostMapping("/profile")
-    public void addNewUser(@RequestBody UserRequest request) {
-
+    public LoginResponse addNewUser(@RequestBody UserRequest request) {
+        LoginResponse response = loginService.addNewUser(request);
+        return response;
     }
+
+    @PostMapping("/contact")
+    @Operation(summary = "Kontakt andmete lisamne (Eesnimi,Perekonnanimi,Asutuse nimi,Kontakttelefon)")
+    public void addNewContact(@RequestBody ContactRequest request) {
+            // TODO: 01/12/2022
+    }
+
+
 }
 
 

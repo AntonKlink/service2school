@@ -7,11 +7,10 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/detail")
-
 public class OfferDetailController {
 
-    @Resource
-    public OfferDetailController offerDetailController;
+//    @Resource
+//    public OfferDetailController offerDetailController;
 
 
 }
