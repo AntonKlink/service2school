@@ -2,14 +2,12 @@ package ee.service2school.business.offer;
 
 import ee.service2school.business.offer.dto.OfferDetailDto;
 import ee.service2school.business.offer.dto.OfferDto;
+import ee.service2school.business.offer.dto.OfferRequestDto;
+import ee.service2school.business.offer.dto.OfferResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,9 +16,6 @@ public class OfferHomeController {
 
     @Resource
     public OfferHomeService offerHomeService;
-
-    @Resource
-    OfferDetailService offerDetailService;
 
     @GetMapping("")
     @Operation(summary = "Selle teenusega saad Home vaatesse 5 viimast pakkumist koos kirjeldusega")
@@ -31,10 +26,18 @@ public class OfferHomeController {
 
     @GetMapping("/detail")
     @Operation(summary = "Siia tuleb esilehel klikitud teenuse detailne vaade kasutades offerId'd")
-    public OfferDetailDto getDetailOffer(@RequestParam Integer offerId) {
-        OfferDetailDto result = offerDetailService.getDetailOfferByOfferId(offerId);
+    public OfferDetailDto getDetailOfferByOfferId(@RequestParam Integer offerId) {
+        OfferDetailDto result = offerHomeService.getDetailOfferByOfferId(offerId);
         return result;
     }
+    @PostMapping("/offer")
+    @Operation(summary = " Offeri lisamine Stage1")
+    public OfferResponseDto addOffer(@RequestBody OfferRequestDto requestDto) {
+
+        OfferResponseDto offerResponseDto = offerHomeService.addOffer(requestDto);
+        return offerResponseDto;
+    }
+
 }
 
 // TODO: 01.12.2022 Siia tuleb getDetailInfo (offerId)

@@ -1,6 +1,5 @@
 package ee.service2school.domain.user;
 
-import ee.service2school.infrastructure.exception.BusinessException;
 import ee.service2school.validation.Validation;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +9,7 @@ import java.util.Optional;
 @Service
 public class UserService {
     @Resource
-    public UserRepository userRepository;
+    private UserRepository userRepository;
 
     public User getValidUser(String email, String password) {
 //        Optional<User> userOptional = userRepository.findBy(email, password);
@@ -26,5 +25,11 @@ public class UserService {
 
     public void addNewUser(User user) {
         userRepository.save(user);
+    }
+
+    public User getUserByUserId(Integer userId) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        User user = userOptional.get();
+        return user;
     }
 }
