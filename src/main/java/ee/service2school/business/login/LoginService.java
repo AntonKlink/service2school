@@ -35,4 +35,13 @@ public class LoginService {
         ContactDto contactDto = contactMapper.contactDto(contact);
         return contactDto;
     }
+
+    public LoginResponse addNewUser(UserRequest request) {
+        User user = userMapper.toEntity(request);
+        userService.addNewUser(user);
+        Integer userId = user.getId();
+        LoginResponse response = new LoginResponse(userId);
+        return response;
+
+    }
 }
