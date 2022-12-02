@@ -1,5 +1,6 @@
 package ee.service2school.domain.offer;
 
+import ee.service2school.business.offer.dto.OfferDetailDto;
 import ee.service2school.business.offer.dto.OfferDto;
 import org.mapstruct.*;
 
@@ -14,5 +15,16 @@ public interface OfferMapper {
 
     List<OfferDto> toDtos(List<Offer> offers);
 
-
+    @Mapping(target = "name", source = "name")
+    @Mapping(target = "description", source = "description")
+    @Mapping(target = "pricePerStudent", source = "pricePerStudent")
+    @Mapping(target = "studentsMin", source = "studentsMin")
+    @Mapping(target = "studentsMax", source = "studentsMax")
+    @Mapping(target = "cityId", source = "city.id")
+    @Mapping(target = "cityName", source = "city.name")
+    @Mapping(target = "address", source = "address")
+    @Mapping(target = "phone", source = "phone")
+    @Mapping(target = "dateAdd", source = "dateAdd")
+    @Mapping(target = "additionalInfo", source = "additionalInfo")
+    OfferDetailDto toDetailDto(Offer offer);
 }

@@ -5,9 +5,11 @@ import ee.service2school.business.offer.dto.OfferDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -29,8 +31,8 @@ public class OfferHomeController {
 
     @GetMapping("/detail")
     @Operation(summary = "Siia tuleb esilehel klikitud teenuse detailne vaade kasutades offerId'd")
-    public List<OfferDetailDto> getDetailOffers() {
-        List<OfferDetailDto> result = offerDetailService.getDetailOffers();
+    public OfferDetailDto getDetailOffer(@RequestParam Integer offerId) {
+        OfferDetailDto result = offerDetailService.getDetailOfferByOfferId(offerId);
         return result;
     }
 }

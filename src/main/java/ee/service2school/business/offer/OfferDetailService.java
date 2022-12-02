@@ -2,8 +2,8 @@ package ee.service2school.business.offer;
 
 import ee.service2school.business.offer.dto.OfferDetailDto;
 import ee.service2school.domain.offer.Offer;
-import ee.service2school.domain.offerdetail.OfferDetailMapper;
-import ee.service2school.domain.offerdetail.OfferDetailRepository;
+import ee.service2school.domain.offer.OfferMapper;
+import ee.service2school.domain.offer.OfferService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,18 +13,15 @@ import java.util.List;
 public class OfferDetailService {
 
     @Resource
-    public OfferDetailMapper offerDetailMapper;
+    private OfferService offerService;
 
     @Resource
-    public OfferDetailService offerDetailService;
+    private OfferMapper offerMapper;
 
-    @Resource
-    public OfferDetailRepository offerDetailRepository;
-
-    public List<OfferDetailDto> getDetailOffers() {
-        List<Offer> offers = offerDetailRepository.findAll();
-        List<OfferDetailDto> offerDetailDtos = offerDetailService(offers);
-        return offerDetailDtos;
+    public OfferDetailDto getDetailOfferByOfferId(Integer offerId) {
+        Offer offer = offerService.findOfferByOfferId(offerId);
+        OfferDetailDto offerDetailDto = offerMapper.toDetailDto(offer);
+        return offerDetailDto;
     }
 
 }
