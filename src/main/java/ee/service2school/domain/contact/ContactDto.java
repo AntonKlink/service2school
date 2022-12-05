@@ -25,4 +25,5 @@ public class ContactDto implements Serializable {
     @NotNull
     private String contactInstitution;
 
+    private Integer userId;
 }
