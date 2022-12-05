@@ -6,4 +6,5 @@ import lombok.Data;
 public class PictureDto {
     private Integer offerId;
     private String pictureData;
+    private String additionalInfo;
 }

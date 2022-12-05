@@ -17,6 +17,7 @@ public class PictureService {
         byte[] pictureDataAsBytes = pictureDataAsString.getBytes(StandardCharsets.UTF_8);
         Offer offer = offerService.findOfferByOfferId(request.getOfferId());
         offer.setPicture(pictureDataAsBytes);
+        offer.setAdditionalInfo(request.getAdditionalInfo());
         offerService.saveOffer(offer);
     }
 }
