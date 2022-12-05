@@ -31,7 +31,7 @@ public class OfferHomeController {
         return result;
     }
     @PostMapping("/offer")
-    @Operation(summary = " Offeri lisamine Stage1")
+    @Operation(summary = "Offeri lisamine Stage1")
     public OfferResponseDto addOffer(@RequestBody OfferRequestDto requestDto) {
 
         OfferResponseDto offerResponseDto = offerHomeService.addOffer(requestDto);
@@ -40,6 +40,6 @@ public class OfferHomeController {
 
 }
 
-// TODO: 01.12.2022 Siia tuleb getDetailInfo (offerId)
+// TODO: võta maha cityId ja e-mail DTO'st, et nad fronti ei läheks
 
 

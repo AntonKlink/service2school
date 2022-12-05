@@ -27,7 +27,6 @@ public class LoginController {
     }
 
     @PostMapping("/profile")
-    @Operation(summary = "Uue konto loomine - email ja parool")
     public LoginResponse addNewUser(@RequestBody UserRequest request) {
         LoginResponse response = loginService.addNewUser(request);
         return response;

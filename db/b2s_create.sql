@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-11-23 10:14:55.114
+-- Last modification date: 2022-12-05 14:09:55.383
 
 -- tables
 -- Table: city
@@ -39,7 +39,7 @@ CREATE TABLE offer (
                        city_id int  NOT NULL,
                        address varchar(255)  NOT NULL,
                        phone int  NOT NULL,
-                       date_add date  NOT NULL DEFAULT now(),
+                       date_add date  NOT NULL DEFAULT NOW(),
                        additional_info varchar(255)  NULL,
                        CONSTRAINT offer_pk PRIMARY KEY (id)
 );
@@ -165,3 +165,4 @@ ALTER TABLE offer ADD CONSTRAINT offer_user
 ;
 
 -- End of file.
+
