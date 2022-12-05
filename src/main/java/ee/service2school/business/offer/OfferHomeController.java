@@ -40,6 +40,6 @@ public class OfferHomeController {
 
 }
 
-// TODO: 01.12.2022 Siia tuleb getDetailInfo (offerId)
+// TODO: võta maha cityId ja e-mail DTO'st, et nad fronti ei läheks
 
 
