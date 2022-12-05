@@ -31,7 +31,7 @@ public class OfferHomeController {
         return result;
     }
     @PostMapping("/offer")
-    @Operation(summary = " Offeri lisamine Stage1")
+    @Operation(summary = "Offeri lisamine Stage1")
     public OfferResponseDto addOffer(@RequestBody OfferRequestDto requestDto) {
 
         OfferResponseDto offerResponseDto = offerHomeService.addOffer(requestDto);

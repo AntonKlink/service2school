@@ -33,7 +33,7 @@ public class LoginController {
     }
 
     @PostMapping("/contact")
-    @Operation(summary = "Kontakt andmete lisamne (Eesnimi,Perekonnanimi,Asutuse nimi,Kontakttelefon)")
+    @Operation(summary = "Kontaktandmete lisamine (Eesnimi,Perekonnanimi,Asutuse nimi,Kontakttelefon)")
     public LoginResponse addNewContact(@RequestBody ContactRequest request) {
         LoginResponse response = loginService.addNewContact(request);
         return response;
