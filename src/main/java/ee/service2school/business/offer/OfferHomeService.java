@@ -59,7 +59,7 @@ public class OfferHomeService {
         offer.setCity(city);
         offer.setUser(user);
         offer.setDateAdd(LocalDate.now());
-        offerService.addOffer(offer);
+        offerService.saveOffer(offer);
         OfferResponseDto responseDto = new OfferResponseDto();
         responseDto.setOfferId(offer.getId());
         return responseDto;

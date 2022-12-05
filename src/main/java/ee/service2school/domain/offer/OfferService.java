@@ -1,6 +1,5 @@
 package ee.service2school.domain.offer;
 
-import ee.service2school.domain.form.city.City;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -32,7 +31,7 @@ public class OfferService {
         return offer;
     }
 
-    public void addOffer(Offer offer) {
+    public void saveOffer(Offer offer) {
         offerRepository.save(offer);
     }
 }

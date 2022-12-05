@@ -1,9 +1,9 @@
-package ee.service2school.domain.picture;
+package ee.service2school.business.picture;
 
 import lombok.Data;
 
 @Data
 public class PictureDto {
-    private Integer pictureId;
+    private Integer offerId;
     private String pictureData;
 }

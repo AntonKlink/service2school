@@ -1,6 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-12-05 14:09:55.383
-
+-- Last modification date: 2022-12-05 14:26:46.419
 -- tables
 -- Table: city
 CREATE TABLE city (
@@ -41,6 +40,7 @@ CREATE TABLE offer (
                        phone int  NOT NULL,
                        date_add date  NOT NULL DEFAULT NOW(),
                        additional_info varchar(255)  NULL,
+                       picture bytea  NULL,
                        CONSTRAINT offer_pk PRIMARY KEY (id)
 );
 
@@ -52,28 +52,12 @@ CREATE TABLE offer_grade (
                              CONSTRAINT offer_grade_pk PRIMARY KEY (id)
 );
 
--- Table: offer_picture
-CREATE TABLE offer_picture (
-                               id serial  NOT NULL,
-                               picture_id int  NOT NULL,
-                               offer_id int  NOT NULL,
-                               status char(1)  NOT NULL DEFAULT 'A',
-                               CONSTRAINT offer_picture_pk PRIMARY KEY (id)
-);
-
 -- Table: offer_subject
 CREATE TABLE offer_subject (
                                id serial  NOT NULL,
                                offer_id int  NOT NULL,
                                subject_id int  NOT NULL,
                                CONSTRAINT offer_subject_pk PRIMARY KEY (id)
-);
-
--- Table: picture
-CREATE TABLE picture (
-                         id serial  NOT NULL,
-                         data bytea  NOT NULL,
-                         CONSTRAINT picture_pk PRIMARY KEY (id)
 );
 
 -- Table: subject
@@ -90,6 +74,7 @@ CREATE TABLE "user" (
                         password varchar(255)  NOT NULL,
                         CONSTRAINT user_pk PRIMARY KEY (id)
 );
+
 
 -- foreign keys
 -- Reference: contact_user (table: contact)
@@ -124,22 +109,6 @@ ALTER TABLE offer_grade ADD CONSTRAINT offer_grade_offer
             INITIALLY IMMEDIATE
 ;
 
--- Reference: offer_picture_offer (table: offer_picture)
-ALTER TABLE offer_picture ADD CONSTRAINT offer_picture_offer
-    FOREIGN KEY (offer_id)
-        REFERENCES offer (id)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
-;
-
--- Reference: offer_picture_picture (table: offer_picture)
-ALTER TABLE offer_picture ADD CONSTRAINT offer_picture_picture
-    FOREIGN KEY (picture_id)
-        REFERENCES picture (id)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
-;
-
 -- Reference: offer_subject_offer (table: offer_subject)
 ALTER TABLE offer_subject ADD CONSTRAINT offer_subject_offer
     FOREIGN KEY (offer_id)
@@ -163,6 +132,3 @@ ALTER TABLE offer ADD CONSTRAINT offer_user
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
-
--- End of file.
-
