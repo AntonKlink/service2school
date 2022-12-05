@@ -46,7 +46,9 @@ public class LoginService {
     }
 
     public LoginResponse addNewContact(ContactRequest request) {
+        User user = userService.getUserByUserId(request.getUserId());
         Contact contact = contactMapper.toEntity(request);
+        contact.setUser(user);
         contactService.addNewContact(contact);
         Integer contactId = contact.getId();
         LoginResponse response = new LoginResponse(contactId);
