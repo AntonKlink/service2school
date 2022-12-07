@@ -30,17 +30,18 @@ CREATE TABLE grade (
 CREATE TABLE offer (
                        id serial  NOT NULL,
                        user_id int  NOT NULL,
+                       city_id int  NOT NULL,
                        name varchar(255)  NOT NULL,
                        description varchar(4096)  NOT NULL,
                        price_per_student int  NOT NULL,
                        students_min int  NOT NULL,
                        students_max int  NOT NULL,
-                       city_id int  NOT NULL,
                        address varchar(255)  NOT NULL,
                        phone int  NOT NULL,
                        date_add date  NOT NULL DEFAULT NOW(),
                        additional_info varchar(255)  NULL,
                        picture bytea  NULL,
+                       status char(1)  NOT NULL DEFAULT 'A',
                        CONSTRAINT offer_pk PRIMARY KEY (id)
 );
 

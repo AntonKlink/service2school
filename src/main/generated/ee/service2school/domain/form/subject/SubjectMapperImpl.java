@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-02T12:31:04+0200",
+    date = "2022-12-07T17:04:28+0200",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.5 (Amazon.com Inc.)"
 )
 @Component
@@ -19,13 +19,10 @@ public class SubjectMapperImpl implements SubjectMapper {
             return null;
         }
 
-        Integer subjectId = null;
-        String subjectName = null;
+        SubjectDto subjectDto = new SubjectDto();
 
-        subjectId = subject.getId();
-        subjectName = subject.getName();
-
-        SubjectDto subjectDto = new SubjectDto( subjectId, subjectName );
+        subjectDto.setSubjectId( subject.getId() );
+        subjectDto.setSubjectName( subject.getName() );
 
         return subjectDto;
     }

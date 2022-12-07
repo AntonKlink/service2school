@@ -2,6 +2,7 @@ package ee.service2school.domain.offer;
 
 import ee.service2school.business.offer.dto.OfferDetailDto;
 import ee.service2school.business.offer.dto.OfferDto;
+import ee.service2school.business.offer.dto.OfferRequestDto;
 import ee.service2school.domain.form.city.City;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-05T10:58:46+0200",
+    date = "2022-12-07T17:04:28+0200",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.5 (Amazon.com Inc.)"
 )
 @Component
@@ -70,6 +71,25 @@ public class OfferMapperImpl implements OfferMapper {
         offerDetailDto.setAdditionalInfo( offer.getAdditionalInfo() );
 
         return offerDetailDto;
+    }
+
+    @Override
+    public Offer toOffer(OfferRequestDto requestDto) {
+        if ( requestDto == null ) {
+            return null;
+        }
+
+        Offer offer = new Offer();
+
+        offer.setName( requestDto.getName() );
+        offer.setDescription( requestDto.getDescription() );
+        offer.setPricePerStudent( requestDto.getPricePerStudent() );
+        offer.setStudentsMin( requestDto.getStudentsMin() );
+        offer.setStudentsMax( requestDto.getStudentsMax() );
+        offer.setAddress( requestDto.getAddress() );
+        offer.setPhone( requestDto.getPhone() );
+
+        return offer;
     }
 
     private Integer offerCityId(Offer offer) {

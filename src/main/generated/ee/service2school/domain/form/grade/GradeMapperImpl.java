@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-02T12:31:04+0200",
+    date = "2022-12-07T17:04:27+0200",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.5 (Amazon.com Inc.)"
 )
 @Component
@@ -19,13 +19,10 @@ public class GradeMapperImpl implements GradeMapper {
             return null;
         }
 
-        Integer gradeId = null;
-        Integer gradeNumber = null;
+        GradeDto gradeDto = new GradeDto();
 
-        gradeId = grade.getId();
-        gradeNumber = grade.getNumber();
-
-        GradeDto gradeDto = new GradeDto( gradeId, gradeNumber );
+        gradeDto.setGradeId( grade.getId() );
+        gradeDto.setGradeNumber( grade.getNumber() );
 
         return gradeDto;
     }
