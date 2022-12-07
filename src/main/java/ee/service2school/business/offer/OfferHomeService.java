@@ -6,11 +6,13 @@ import ee.service2school.domain.form.city.CityService;
 import ee.service2school.domain.form.grade.Grade;
 import ee.service2school.domain.form.grade.GradeDto;
 import ee.service2school.domain.form.grade.GradeService;
+import ee.service2school.domain.form.subject.Subject;
 import ee.service2school.domain.form.subject.SubjectDto;
 import ee.service2school.domain.form.subject.SubjectService;
 import ee.service2school.domain.grade.OfferGrade;
 import ee.service2school.domain.grade.OfferGradeService;
 import ee.service2school.domain.offer.*;
+import ee.service2school.domain.subject.OfferSubject;
 import ee.service2school.domain.subject.OfferSubjectService;
 import ee.service2school.domain.user.User;
 import ee.service2school.domain.user.UserService;
@@ -112,13 +114,29 @@ public class OfferHomeService {
         }
     }
 
-    private void saveSelectedSubjects(Offer offer, List<SubjectDto> subjectDtos) {
+//    private void saveSelectedSubjects(Offer offer, List<SubjectDto> subjectDtos) {
+////        saveSelectedSubject(offer, subjectDtos);
+//    }
+
+    private void saveSelectedSubject(Offer offer, List<SubjectDto> subjectDtos) {
         for (SubjectDto subjectDto : subjectDtos) {
             if (subjectDto.getIsSelected()) {
                 Integer subjectId = subjectDto.getSubjectId();
-                subjectService.findSubjectBySubjectId(subjectId);
+                Subject subject = subjectService.findSubjectBySubjectId(subjectId);
+
+                OfferSubject offerSubject = new OfferSubject();
+                offerSubject.setOffer(offer);
+                offerSubject.setSubject(subject);
+
+                offerSubjectService.addOfferSubject(offerSubject);
             }
         }
     }
 
+    public void updateOffer(Integer offerId, OfferUpdate offerUpdate) {
+        Offer offer = offerService.findOfferByOfferId(offerId);
+        offerMapper.updateOffer(offerUpdate, offer);
+        offerService.save(offer);
+
+    }
 }
