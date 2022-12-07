@@ -4,6 +4,7 @@ package ee.service2school.domain.contact;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 
 @Service
@@ -23,6 +24,10 @@ public class ContactService {
     }
 
 
+
+    public void save(Contact contact) {
+        contactRepository.save(contact);
+    }
 }
 
 

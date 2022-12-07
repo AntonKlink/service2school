@@ -39,7 +39,12 @@ public class LoginController {
         return response;
     }
 
+    @PutMapping("/change")
+    @Operation(summary = "Konto info muutmine")
+    public void updateContact(@RequestParam Integer userId, @RequestBody ContactUpdate request) {
+        loginService.updateContact(userId, request);
 
+    }
 }
 
 

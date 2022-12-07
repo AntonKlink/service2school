@@ -14,16 +14,14 @@ public class ContactDto implements Serializable {
     private Integer contactId;
     @Size(max = 255)
     @NotNull
-    private  String contactFirstName;
+    private  String firstName;
     @Size(max = 255)
     @NotNull
-    private String contactLastName;
+    private String lastName;
     @Size(max = 255)
     @NotNull
-    private String contactPhone;
+    private String phone;
     @Size(max = 255)
     @NotNull
-    private String contactInstitution;
-
-    private Integer userId;
+    private String institution;
 }

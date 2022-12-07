@@ -1,9 +1,6 @@
 package ee.service2school.business.offer;
 
-import ee.service2school.business.offer.dto.OfferDetailDto;
-import ee.service2school.business.offer.dto.OfferDto;
-import ee.service2school.business.offer.dto.OfferRequestDto;
-import ee.service2school.business.offer.dto.OfferResponseDto;
+import ee.service2school.business.offer.dto.*;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +27,7 @@ public class OfferHomeController {
         OfferDetailDto result = offerHomeService.getDetailOfferByOfferId(offerId);
         return result;
     }
+
     @PostMapping("/offer")
     @Operation(summary = "Offeri lisamine Stage1")
     public OfferResponseDto addOffer(@RequestBody OfferRequestDto requestDto) {
@@ -38,6 +36,11 @@ public class OfferHomeController {
         return offerResponseDto;
     }
 
+    @PostMapping("/offer/grade/subject")
+    @Operation(summary = "klasside ja ainete lisamine pakkumisele")
+    public void addGradeSubjectToOffer(@RequestBody GradeSubjectRequestDto dto) {
+        offerHomeService.addGradeSubjectToOffer(dto);
+    }
 }
 
 

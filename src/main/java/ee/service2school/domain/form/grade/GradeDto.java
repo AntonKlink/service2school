@@ -10,7 +10,9 @@ import java.io.Serializable;
  */
 @Data
 public class GradeDto implements Serializable {
-    private final Integer gradeId;
+    private Integer gradeId;
     @NotNull
-    private final Integer gradeNumber;
+    private Integer gradeNumber;
+
+    private Boolean isSelected = false;
 }
