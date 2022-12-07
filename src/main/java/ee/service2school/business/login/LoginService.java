@@ -7,6 +7,7 @@ import ee.service2school.domain.user.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Optional;
 
 @Service
 public class LoginService {
@@ -53,6 +54,13 @@ public class LoginService {
         Integer contactId = contact.getId();
         LoginResponse response = new LoginResponse(contactId);
         return response;
+    }
+
+    public void updateContact(Integer contactId, ContactUpdate contactUpdate) {
+        Optional<Contact> optionalContact = contactService.findById(contactId);
+        Contact contact = optionalContact.get();
+        contactMapper.updateContact(contactUpdate,contact);
+        contactService.save(contact);
     }
 }
 

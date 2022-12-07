@@ -1,8 +1,8 @@
 package ee.service2school.domain.contact;
 
 import ee.service2school.business.login.ContactRequest;
+import ee.service2school.business.login.ContactUpdate;
 import org.mapstruct.*;
-
 
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
@@ -20,4 +20,10 @@ public interface ContactMapper {
     Contact toEntity(ContactRequest request);
 
 
+    @Mapping(source = "contactFirstName", target = "firstName")
+    @Mapping(source = "contactLastName", target = "lastName")
+    @Mapping(source = "contactPhone", target = "phone")
+    @Mapping(source = "contactInstitution", target = "institution")
+    void updateContact(ContactUpdate contactUpdate,@MappingTarget Contact contact);
 }
+
