@@ -40,6 +40,5 @@ public class OfferHomeController {
 
 }
 
-// TODO: võta maha cityId ja e-mail DTO'st, et nad fronti ei läheks
 
 

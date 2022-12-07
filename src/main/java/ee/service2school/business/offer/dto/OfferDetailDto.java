@@ -13,8 +13,8 @@ import java.time.LocalDate;
  */
 @Data
 public class OfferDetailDto implements Serializable {
-    @NotNull
-    private String email;
+//    @NotNull
+//    private String email;
     @Size(max = 255)
     @NotNull
     private String name;
