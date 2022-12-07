@@ -13,15 +13,15 @@ import java.io.Serializable;
 public class ContactUpdate implements Serializable {
     @Size(max = 255)
     @NotNull
-    private final String contactFirstName;
+    private final String firstName;
     @Size(max = 255)
     @NotNull
-    private final String contactLastName;
+    private final String lastName;
     @Size(max = 255)
     @NotNull
-    private final String contactPhone;
+    private final String phone;
     @Size(max = 255)
     @NotNull
-    private final String contactInstitution;
+    private final String institution;
 
 }

@@ -56,9 +56,8 @@ public class LoginService {
         return response;
     }
 
-    public void updateContact(Integer contactId, ContactUpdate contactUpdate) {
-        Optional<Contact> optionalContact = contactService.findById(contactId);
-        Contact contact = optionalContact.get();
+    public void updateContact(Integer userId, ContactUpdate contactUpdate) {
+        Contact contact = contactService.findByUserId(userId);
         contactMapper.updateContact(contactUpdate,contact);
         contactService.save(contact);
     }

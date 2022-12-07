@@ -23,10 +23,7 @@ public class ContactService {
         contactRepository.save(contact);
     }
 
-    public Optional<Contact> findById(Integer contactId) {
-        Optional<Contact> contact = Optional.of(contactRepository.findById(contactId).get());
-        return contact;
-    }
+
 
     public void save(Contact contact) {
         contactRepository.save(contact);
