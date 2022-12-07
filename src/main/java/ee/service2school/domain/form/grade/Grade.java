@@ -1,8 +1,11 @@
 package ee.service2school.domain.form.grade;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+@Data
 @Entity
 @Table(name = "grade")
 public class Grade {
@@ -14,21 +17,5 @@ public class Grade {
     @NotNull
     @Column(name = "number", nullable = false)
     private Integer number;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getNumber() {
-        return number;
-    }
-
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
 
 }

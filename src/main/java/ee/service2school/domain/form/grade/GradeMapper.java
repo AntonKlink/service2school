@@ -1,5 +1,6 @@
 package ee.service2school.domain.form.grade;
 
+import ee.service2school.domain.grade.OfferGrade;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -14,6 +15,5 @@ public interface GradeMapper {
 
 
     List<GradeDto> toDtos(List<Grade> grades);
-
 
 }

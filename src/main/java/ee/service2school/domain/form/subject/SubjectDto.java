@@ -11,8 +11,9 @@ import java.io.Serializable;
  */
 @Data
 public class SubjectDto implements Serializable {
-    private final Integer subjectId;
+    private Integer subjectId;
     @Size(max = 50)
     @NotNull
-    private final String subjectName;
+    private  String subjectName;
+    private Boolean isSelected = false;
 }
