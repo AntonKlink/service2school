@@ -33,9 +33,6 @@ public class OfferUpdate implements Serializable {
     private final String address;
     @NotNull
     private final Integer phone;
-    @NotNull
-    private final LocalDate dateAdd;
     @Size(max = 255)
     private final String additionalInfo;
-//    private final byte[] picture;
 }

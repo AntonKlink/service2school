@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Data
 public class OfferDetailDto implements Serializable {
 //    @NotNull
-//    private String email;
+    private Integer userId;
     @Size(max = 255)
     @NotNull
     private String name;

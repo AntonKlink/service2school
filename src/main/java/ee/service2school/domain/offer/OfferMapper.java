@@ -17,6 +17,7 @@ public interface OfferMapper {
 
     List<OfferDto> toDtos(List<Offer> offers);
 
+    @Mapping(target = "userId", source = "user.id")
     @Mapping(target = "name", source = "name")
     @Mapping(target = "description", source = "description")
     @Mapping(target = "pricePerStudent", source = "pricePerStudent")
@@ -30,7 +31,6 @@ public interface OfferMapper {
     @Mapping(target = "additionalInfo", source = "additionalInfo")
     @Mapping(target = "status", source = "status")
     OfferDetailDto toDetailDto(Offer offer);
-//    @Mapping(source = "", target = "dateAdd")
 
     Offer toOffer(OfferRequestDto requestDto);
 

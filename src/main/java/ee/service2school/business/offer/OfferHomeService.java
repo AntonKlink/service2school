@@ -139,8 +139,11 @@ public class OfferHomeService {
 
 
     public void updateOffer(Integer offerId, OfferUpdate offerUpdate) {
+        City city = cityService.getCityByCityId(offerUpdate.getCityId());
+
         Offer offer = offerService.findOfferByOfferId(offerId);
         offerMapper.updateOffer(offerUpdate, offer);
+        offer.setCity(city);
         offerService.save(offer);
 
     }
