@@ -130,4 +130,12 @@ public class OfferHomeService {
         }
     }
 
+
+
+    public void updateOffer(Integer offerId, OfferUpdate offerUpdate) {
+        Offer offer = offerService.findOfferByOfferId(offerId);
+        offerMapper.updateOffer(offerUpdate, offer);
+        offerService.save(offer);
+
+    }
 }
