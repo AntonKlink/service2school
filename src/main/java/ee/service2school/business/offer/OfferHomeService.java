@@ -94,17 +94,18 @@ public class OfferHomeService {
         Integer offerId = dto.getOfferId();
 
         Offer offer = offerService.findOfferByOfferId(offerId);
-        List<GradeDto> gradeDtos = dto.getGrades();
-        List<SubjectDto> subjects = dto.getSubjects();
+        List<GradeDto> gradeDtos1 = dto.getGrades();
+        List<SubjectDto> subjectDtos1 = dto.getSubjects();
 
-        saveSelectedGrades(offer, gradeDtos);
+        saveSelectedGrades(offer, gradeDtos1);
+        saveSelectedSubjects(offer, subjectDtos1);
 
 
 
     }
 
-    private void saveSelectedGrades(Offer offer, List<GradeDto> gradeDtos) {
-        for (GradeDto gradeDto : gradeDtos) {
+    private void saveSelectedGrades(Offer offer, List<GradeDto> gradeDtos1) {
+        for (GradeDto gradeDto : gradeDtos1) {
             if (gradeDto.getIsSelected()) {
                 Integer gradeId = gradeDto.getGradeId();
                 Grade grade = gradeService.findGradeByGradeId(gradeId);
@@ -120,8 +121,8 @@ public class OfferHomeService {
         }
     }
 
-    private void saveSelectedSubjects(Offer offer, List<SubjectDto> subjectDtos) {
-        for (SubjectDto subjectDto : subjectDtos) {
+    private void saveSelectedSubjects(Offer offer, List<SubjectDto> subjectDtos1) {
+        for (SubjectDto subjectDto : subjectDtos1) {
             if (subjectDto.getIsSelected()) {
                 Integer subjectId = subjectDto.getSubjectId();
                 Subject subject = subjectService.findSubjectBySubjectId(subjectId);
