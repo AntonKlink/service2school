@@ -1,6 +1,7 @@
 package ee.service2school.business.offer;
 
 import ee.service2school.business.offer.dto.*;
+import ee.service2school.domain.offer.Offer;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +36,13 @@ public class OfferHomeController {
         return result;
     }
 
+    @GetMapping("/user-offers")
+    @Operation(summary = "See teenus kuvab ainult konkreetse kasutaja poolt lisatud teenused")
+    public List<OfferDto> getUserOffers(@RequestParam Integer userId) {
+        List<OfferDto> activeOffersByUser = offerHomeService.getActiveOffersByUser(userId);
+        return activeOffersByUser;
+    }
+
     @PostMapping("/offer")
     @Operation(summary = "Offeri lisamine Stage1")
     public OfferResponseDto addOffer(@RequestBody OfferRequestDto requestDto) {
@@ -53,6 +61,12 @@ public class OfferHomeController {
     @Operation(summary = "muuta pakkumise info")
     public void updateOffer(@RequestParam Integer offerId, @RequestBody OfferUpdate request) {
         offerHomeService.updateOffer(offerId, request);
+    }
+
+    @DeleteMapping("/delete-offer")
+    @Operation(summary = "Selle teenusega saab 'kustutada' teenuse ehk muuta offerId põhjal offer tabelis status väli")
+    public void deleteOffer(@RequestParam Integer offerId) {
+        offerHomeService.deleteOffer(offerId);
     }
 }
 
