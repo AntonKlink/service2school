@@ -67,10 +67,11 @@ public class OfferHomeService {
         return activeOffers;
     }
 
-
-//    public List<OfferDto> getUserOffers () {
-//        offerService.
-//    }
+    public void deleteOffer(Integer offerId) {
+        Offer offer = offerService.findOfferByOfferId(offerId);
+        offer.setStatus("D");
+        offerService.saveOffer(offer);
+    }
 
     public OfferDetailDto getDetailOfferByOfferId(Integer offerId) {
         Offer offer = offerService.findOfferByOfferId(offerId);
@@ -140,7 +141,5 @@ public class OfferHomeService {
         offerService.save(offer);
     }
 
-    public void deleteOffer(Integer offerId) {
 
-    }
 }

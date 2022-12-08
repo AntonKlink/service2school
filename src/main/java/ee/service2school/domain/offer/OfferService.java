@@ -23,11 +23,6 @@ public class OfferService {
         return offerRepository.findOffersByStatusAndUserId(userId, "A");
     }
 
-    //TODO - see lõpuks viib profiili drop-downi
-//    List<Offer> findUserActiveOffers(Integer userId, String status) {
-//        return offerRepository.findOffersByStatusAndUserId(userId, "A");
-//    }
-
     public List<Offer> getAllOffers() {
         List<Offer> offers = offerRepository.findTop100ByOrderByDateAddDescNameAsc();
         return offers;
@@ -53,6 +48,5 @@ public class OfferService {
     public void save(Offer offer) {
         offerRepository.save(offer);
     }
-
 
 }
