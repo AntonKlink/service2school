@@ -14,8 +14,13 @@ public class OfferService {
 
 
     public List<Offer> getLastFiveOffers() {
-        List<Offer> offers = offerRepository.findTop5ByOrderByDateAddDescNameAsc();
+        List<Offer> offers = offerRepository.findTop5ByStatusOrderByDateAddDesc("A");
         return offers;
+    }
+
+    //TODO - see lõpuks viib profiili drop-downi
+    List<Offer> findUserActiveOffers(Integer userId, String status) {
+        return offerRepository.findOffersByStatusAndUserId(userId, "A");
     }
 
     public List<Offer> getAllOffers() {
