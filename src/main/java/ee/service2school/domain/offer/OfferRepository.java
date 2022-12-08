@@ -8,7 +8,6 @@ import java.util.List;
 public interface OfferRepository extends JpaRepository<Offer, Integer> {
 
     List<Offer> findTop5ByOrderByDateAddDescNameAsc();
-
-
+    List<Offer> findTop100ByOrderByDateAddDescNameAsc();
 
 }

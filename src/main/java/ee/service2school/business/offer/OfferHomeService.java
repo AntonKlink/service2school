@@ -55,6 +55,12 @@ public class OfferHomeService {
         return offerDtos;
     }
 
+    public List<OfferDto> getAllOffers() {
+        List<Offer> offers = offerService.getAllOffers();
+        List<OfferDto> offerDtos = offerMapper.toDtos(offers);
+        return offerDtos;
+    }
+
 
     public OfferDetailDto getDetailOfferByOfferId(Integer offerId) {
         Offer offer = offerService.findOfferByOfferId(offerId);

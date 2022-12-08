@@ -27,6 +27,7 @@ public interface OfferMapper {
     @Mapping(target = "phone", source = "phone")
     @Mapping(target = "dateAdd", source = "dateAdd")
     @Mapping(target = "additionalInfo", source = "additionalInfo")
+    @Mapping(target = "status", source = "status")
     OfferDetailDto toDetailDto(Offer offer);
 //    @Mapping(source = "", target = "dateAdd")
 

@@ -40,4 +40,7 @@ public class OfferDetailDto implements Serializable {
     private LocalDate dateAdd;
     @Size(max = 255)
     private String additionalInfo;
+    @Size(max = 1)
+    @NotNull
+    private final String status;
 }

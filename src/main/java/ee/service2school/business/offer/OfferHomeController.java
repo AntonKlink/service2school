@@ -21,6 +21,13 @@ public class OfferHomeController {
         return result;
     }
 
+    @GetMapping("/about")
+    @Operation(summary = "Selle teenusega saad Teenused vaatesse 100 viimast pakkumist koos kirjeldusega")
+    public List<OfferDto> getAllOffers() {
+        List<OfferDto> result = offerHomeService.getAllOffers();
+        return result;
+    }
+
     @GetMapping("/detail")
     @Operation(summary = "Siia tuleb esilehel klikitud teenuse detailne vaade kasutades offerId'd")
     public OfferDetailDto getDetailOfferByOfferId(@RequestParam Integer offerId) {

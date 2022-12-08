@@ -69,6 +69,9 @@ public class Offer {
     @Column(name = "picture")
     private byte[] picture;
 
-
+    @Size(max = 1)
+    @NotNull
+    @Column(name = "status", nullable = false, length = 1)
+    private String status;
 
 }

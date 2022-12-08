@@ -18,6 +18,11 @@ public class OfferService {
         return offers;
     }
 
+    public List<Offer> getAllOffers() {
+        List<Offer> offers = offerRepository.findTop100ByOrderByDateAddDescNameAsc();
+        return offers;
+    }
+
     public Offer findOfferByOfferId(Integer offerId) {
         Optional<Offer> offerOptional = offerRepository.findById(offerId);
         Offer offer = offerOptional.get();

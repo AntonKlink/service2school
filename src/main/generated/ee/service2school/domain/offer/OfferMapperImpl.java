@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-07T17:04:28+0200",
+    date = "2022-12-08T12:15:15+0200",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.5 (Amazon.com Inc.)"
 )
 @Component
@@ -56,7 +56,11 @@ public class OfferMapperImpl implements OfferMapper {
             return null;
         }
 
-        OfferDetailDto offerDetailDto = new OfferDetailDto();
+        String status = null;
+
+        status = offer.getStatus();
+
+        OfferDetailDto offerDetailDto = new OfferDetailDto( status );
 
         offerDetailDto.setName( offer.getName() );
         offerDetailDto.setDescription( offer.getDescription() );
