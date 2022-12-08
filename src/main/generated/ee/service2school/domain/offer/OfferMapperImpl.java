@@ -5,6 +5,7 @@ import ee.service2school.business.offer.dto.OfferDto;
 import ee.service2school.business.offer.dto.OfferRequestDto;
 import ee.service2school.business.offer.dto.OfferUpdate;
 import ee.service2school.domain.form.city.City;
+import ee.service2school.domain.user.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-12-08T14:24:36+0200",
+    date = "2022-12-08T14:43:34+0200",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.5 (Amazon.com Inc.)"
 )
 @Component
@@ -63,6 +64,7 @@ public class OfferMapperImpl implements OfferMapper {
 
         OfferDetailDto offerDetailDto = new OfferDetailDto( status );
 
+        offerDetailDto.setUserId( offerUserId( offer ) );
         offerDetailDto.setName( offer.getName() );
         offerDetailDto.setDescription( offer.getDescription() );
         offerDetailDto.setPricePerStudent( offer.getPricePerStudent() );
@@ -110,8 +112,22 @@ public class OfferMapperImpl implements OfferMapper {
         offer.setStudentsMax( offerUpdate.getStudentsMax() );
         offer.setAddress( offerUpdate.getAddress() );
         offer.setPhone( offerUpdate.getPhone() );
-        offer.setDateAdd( offerUpdate.getDateAdd() );
         offer.setAdditionalInfo( offerUpdate.getAdditionalInfo() );
+    }
+
+    private Integer offerUserId(Offer offer) {
+        if ( offer == null ) {
+            return null;
+        }
+        User user = offer.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        Integer id = user.getId();
+        if ( id == null ) {
+            return null;
+        }
+        return id;
     }
 
     private Integer offerCityId(Offer offer) {

@@ -15,6 +15,6 @@ public interface OfferRepository extends JpaRepository<Offer, Integer> {
     @Query("select o from Offer o where o.user.id = ?1 and o.status = ?2 order by o.dateAdd DESC")
     List<Offer> findOffersByStatusAndUserId(Integer userId, String status);
 
-    long deleteByName(String name);
+//    long deleteByName(String name);
 
 }

@@ -9,6 +9,7 @@ import java.util.Optional;
 @Service
 public class OfferService {
 
+
     @Resource
     private OfferRepository offerRepository;
 
@@ -18,10 +19,14 @@ public class OfferService {
         return offers;
     }
 
-    //TODO - see lõpuks viib profiili drop-downi
-    List<Offer> findUserActiveOffers(Integer userId, String status) {
+    public List<Offer> getActiveOffersByUserId(Integer userId) {
         return offerRepository.findOffersByStatusAndUserId(userId, "A");
     }
+
+    //TODO - see lõpuks viib profiili drop-downi
+//    List<Offer> findUserActiveOffers(Integer userId, String status) {
+//        return offerRepository.findOffersByStatusAndUserId(userId, "A");
+//    }
 
     public List<Offer> getAllOffers() {
         List<Offer> offers = offerRepository.findTop100ByOrderByDateAddDescNameAsc();
@@ -48,4 +53,6 @@ public class OfferService {
     public void save(Offer offer) {
         offerRepository.save(offer);
     }
+
+
 }
