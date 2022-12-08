@@ -48,6 +48,12 @@ public class OfferHomeController {
     public void addGradeSubjectToOffer(@RequestBody GradeSubjectRequestDto dto) {
         offerHomeService.addGradeSubjectToOffer(dto);
     }
+
+    @PutMapping("/change-offer")
+    @Operation(summary = "muuta pakkumise info")
+    public void updateOffer(@RequestParam Integer offerId, @RequestBody OfferUpdate request) {
+        offerHomeService.updateOffer(offerId, request);
+    }
 }
 
 

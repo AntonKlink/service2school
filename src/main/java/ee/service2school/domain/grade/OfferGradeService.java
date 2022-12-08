@@ -13,4 +13,5 @@ public class OfferGradeService {
     public void addOfferGrade(OfferGrade offerGrade) {
         offerGradeRepository.save(offerGrade);
     }
+
 }

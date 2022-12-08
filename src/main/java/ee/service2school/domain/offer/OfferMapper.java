@@ -3,6 +3,7 @@ package ee.service2school.domain.offer;
 import ee.service2school.business.offer.dto.OfferDetailDto;
 import ee.service2school.business.offer.dto.OfferDto;
 import ee.service2school.business.offer.dto.OfferRequestDto;
+import ee.service2school.business.offer.dto.OfferUpdate;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -32,4 +33,8 @@ public interface OfferMapper {
 //    @Mapping(source = "", target = "dateAdd")
 
     Offer toOffer(OfferRequestDto requestDto);
+
+
+    void updateOffer(OfferUpdate offerUpdate,@MappingTarget Offer offer);
+
 }
