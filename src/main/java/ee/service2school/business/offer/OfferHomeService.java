@@ -79,6 +79,7 @@ public class OfferHomeService {
         return offerDetailDto;
     }
 
+
     public OfferResponseDto addOffer(OfferRequestDto requestDto) {
         /// Meelespea, alati tegeleme foreignKey-dega kõigepealt
         Integer userId = requestDto.getUserId();
@@ -88,6 +89,8 @@ public class OfferHomeService {
 
         Integer cityId = requestDto.getCityId();
         City city = cityService.getCityByCityId(cityId);
+
+
         Offer offer = offerMapper.toOffer(requestDto);
         offer.setCity(city);
         offer.setUser(user);
@@ -100,11 +103,16 @@ public class OfferHomeService {
 
     public void addGradeSubjectToOffer(GradeSubjectRequestDto dto) {
         Integer offerId = dto.getOfferId();
+
         Offer offer = offerService.findOfferByOfferId(offerId);
         List<GradeDto> gradeDtos1 = dto.getGrades();
         List<SubjectDto> subjectDtos1 = dto.getSubjects();
+
         saveSelectedGrades(offer, gradeDtos1);
         saveSelectedSubjects(offer, subjectDtos1);
+
+
+
     }
 
     private void saveSelectedGrades(Offer offer, List<GradeDto> gradeDtos1) {
@@ -112,11 +120,15 @@ public class OfferHomeService {
             if (gradeDto.getIsSelected()) {
                 Integer gradeId = gradeDto.getGradeId();
                 Grade grade = gradeService.findGradeByGradeId(gradeId);
+
                 OfferGrade offerGrade = new OfferGrade();
                 offerGrade.setOffer(offer);
                 offerGrade.setGrade(grade);
+
                 offerGradeService.addOfferGrade(offerGrade);
             }
+
+
         }
     }
 
@@ -125,21 +137,26 @@ public class OfferHomeService {
             if (subjectDto.getIsSelected()) {
                 Integer subjectId = subjectDto.getSubjectId();
                 Subject subject = subjectService.findSubjectBySubjectId(subjectId);
+
                 OfferSubject offerSubject = new OfferSubject();
                 offerSubject.setOffer(offer);
                 offerSubject.setSubject(subject);
+
                 offerSubjectService.addOfferSubject(offerSubject);
+
             }
         }
     }
 
+
+
     public void updateOffer(Integer offerId, OfferUpdate offerUpdate) {
         City city = cityService.getCityByCityId(offerUpdate.getCityId());
+
         Offer offer = offerService.findOfferByOfferId(offerId);
         offerMapper.updateOffer(offerUpdate, offer);
         offer.setCity(city);
         offerService.save(offer);
+
     }
-
-
 }
