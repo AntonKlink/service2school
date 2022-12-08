@@ -52,13 +52,13 @@ public class OfferHomeController {
     }
 
     @PostMapping("/offer/grade/subject")
-    @Operation(summary = "klasside ja ainete lisamine pakkumisele")
+    @Operation(summary = "Klasside ja ainete lisamine pakkumisele")
     public void addGradeSubjectToOffer(@RequestBody GradeSubjectRequestDto dto) {
         offerHomeService.addGradeSubjectToOffer(dto);
     }
 
     @PutMapping("/change-offer")
-    @Operation(summary = "muuta pakkumise info")
+    @Operation(summary = "Muuda pakkumise info")
     public void updateOffer(@RequestParam Integer offerId, @RequestBody OfferUpdate request) {
         offerHomeService.updateOffer(offerId, request);
     }
