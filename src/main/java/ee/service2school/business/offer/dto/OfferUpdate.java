@@ -5,7 +5,6 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 /**
  * A DTO for the {@link ee.service2school.domain.offer.Offer} entity
@@ -14,25 +13,25 @@ import java.time.LocalDate;
 public class OfferUpdate implements Serializable {
     @Size(max = 255)
     @NotNull
-    private final String name;
+    private String name;
     @Size(max = 4096)
     @NotNull
-    private final String description;
+    private String description;
     @NotNull
-    private final Integer pricePerStudent;
+    private Integer pricePerStudent;
     @NotNull
-    private final Integer studentsMin;
+    private Integer studentsMin;
     @NotNull
-    private final Integer studentsMax;
-    private final Integer cityId;
+    private Integer studentsMax;
+    private Integer cityId;
     @Size(max = 50)
     @NotNull
-    private final String cityName;
+    private String cityName;
     @Size(max = 255)
     @NotNull
-    private final String address;
+    private String address;
     @NotNull
-    private final Integer phone;
+    private Integer phone;
     @Size(max = 255)
-    private final String additionalInfo;
+    private String additionalInfo;
 }
