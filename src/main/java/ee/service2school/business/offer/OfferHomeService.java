@@ -95,6 +95,7 @@ public class OfferHomeService {
         offer.setCity(city);
         offer.setUser(user);
         offer.setDateAdd(LocalDate.now());
+        offer.setStatus("A");
         offerService.saveOffer(offer);
         OfferResponseDto responseDto = new OfferResponseDto();
         responseDto.setOfferId(offer.getId());
